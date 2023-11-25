@@ -19,7 +19,7 @@ namespace NutriPlanApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionaUsuario([FromBody] CreateUsuarioDto createUsuarioDto)
+        public IActionResult AdicionaUsuario([FromForm] CreateUsuarioDto createUsuarioDto)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuarioDto);
             _context.Usuarios.Add(usuario);
