@@ -6,6 +6,6 @@ namespace NutriPlanApi.Data
     public class NutriPlanContext : DbContext
     {
         public NutriPlanContext(DbContextOptions<NutriPlanContext> opts) : base(opts) { }
-        public DbSet<Usuario> usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

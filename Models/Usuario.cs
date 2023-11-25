@@ -1,11 +1,14 @@
-﻿namespace NutriPlanApi.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NutriPlanApi.Models
 {
     public class Usuario
     {
-        public int UsuarioId;
-        public string UsuarioNome;
-        public string UsuarioEmail;
-        public string UsuarioSenha;
-        public string? UsuarioTelefone;
+        [Key]
+        public int usuario_id { get; set; }
+        public string usuario_nome { get; set; }
+        public string usuario_email { get; set; }
+        public string usuario_senha { get; set; }
+        public string? usuario_telefone { get; set; }
     }
 }

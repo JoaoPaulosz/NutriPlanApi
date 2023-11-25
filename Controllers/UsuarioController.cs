@@ -22,7 +22,7 @@ namespace NutriPlanApi.Controllers
         public IActionResult AdicionaUsuario([FromBody] CreateUsuarioDto createUsuarioDto)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuarioDto);
-            _context.Add<Usuario>(usuario);
+            _context.Usuarios.Add(usuario);
             _context.SaveChanges();
             return Ok(usuario);
         }
