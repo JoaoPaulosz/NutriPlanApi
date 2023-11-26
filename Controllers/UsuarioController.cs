@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using NutriPlanApi.Data;
 using NutriPlanApi.Data.Dtos;
 using NutriPlanApi.Models;
+using NutriPlanApi.Services;
+using System.Security.Cryptography;
 
 namespace NutriPlanApi.Controllers
 {
@@ -22,9 +24,24 @@ namespace NutriPlanApi.Controllers
         public IActionResult AdicionaUsuario([FromForm] CreateUsuarioDto createUsuarioDto)
         {
             Usuario usuario = _mapper.Map<Usuario>(createUsuarioDto);
+            usuario.usuario_senha = CalculateMd5.CalculateMD5Hash(usuario.usuario_senha);
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
-            return Ok(usuario);
+            return CreatedAtAction(nameof(Login),new {Email = usuario.usuario_email, Senha = usuario.usuario_senha},usuario);
+        }
+        [HttpGet]
+        public IActionResult Login([FromQuery]string email, [FromQuery] string senha)
+        {
+            Usuario usuario = _context.Usuarios.FirstOrDefault(x => x.usuario_email == email && x.usuario_senha == CalculateMd5.CalculateMD5Hash(senha));
+            if(usuario == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(usuario);
+            }
+            
         }
     }
 }

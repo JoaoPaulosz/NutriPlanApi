@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace NutriPlanApi.Models
 {
@@ -10,5 +11,7 @@ namespace NutriPlanApi.Models
         public string usuario_email { get; set; }
         public string usuario_senha { get; set; }
         public string? usuario_telefone { get; set; }
+        [JsonIgnore]
+        public virtual List<Alimento> Alimentos { get; set; }
     }
 }
