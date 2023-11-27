@@ -15,5 +15,7 @@ namespace NutriPlanApi.Data
         }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Alimento> alimento { get; set; }
+        public DbSet<Receita> receita { get; set; }
+        public DbSet<AlimentoReceita> alimentoReceita { get; set; }
     }
 }

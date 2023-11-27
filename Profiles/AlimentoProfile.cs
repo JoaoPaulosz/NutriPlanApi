@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using NutriPlanApi.Data.Dtos;
+using NutriPlanApi.Data.Dtos.Alimento;
 using NutriPlanApi.Models;
 
 namespace NutriPlanApi.Profiles
